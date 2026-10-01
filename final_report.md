@@ -22,13 +22,13 @@ This project investigated whether the flexible operation of a grid-connected ele
 The project also compared the effects of optimising for cost-only, emissions-only and balanced strategies against even operation. A sensitivity analysis was conducted using the carbon value chosen, efficiency value for the electrolyser and by adding constraints to the operation.
 
 ## 2. Data and assumptions
-This project uses half-hourly electricity price and carbon-intensity data for Great Britain. Carbon-intensity data were taken from the Carbon Intensity API, which provides forecast carbon intensity and estimated actual carbon intensity for the GB electricity system [3]. This allows the project to compare a forecast-based carbon schedule with a perfect-hindsight schedule based on actual carbon intensity.
+This project uses half-hourly electricity price and carbon-intensity data for Great Britain. Carbon-intensity data were taken from the Carbon Intensity API, which provides forecast carbon intensity and estimated actual carbon intensity for the GB electricity system [1]. This allows the project to compare a forecast-based carbon schedule with a perfect-hindsight schedule based on actual carbon intensity.
 
-Electricity price data were taken from Elexon’s system price data, which reports indicative £/MWh prices for settlement periods [4]. In this project, these data are used as a time-varying market price signal rather than a full delivered industrial electricity tariff.
+Electricity price data were taken from Elexon’s system price data, which reports indicative £/MWh prices for settlement periods [2]. In this project, these data are used as a time-varying market price signal rather than a full delivered industrial electricity tariff.
 
-The electrolyser is modelled as a simplified 1 MW grid-connected asset. It is required to produce 300 kg of hydrogen per day. The base-case electricity consumption is assumed to be 50 kWh/kg H2, which is consistent with the IEA’s assumption for low-temperature water electrolysis including compression [6]. This gives a daily electricity requirement of 15 MWh.
+The electrolyser is modelled as a simplified 1 MW grid-connected asset. It is required to produce 300 kg of hydrogen per day. The base-case electricity consumption is assumed to be 50 kWh/kg H2, which is consistent with the IEA’s assumption for low-temperature water electrolysis including compression [3]. This gives a daily electricity requirement of 15 MWh.
 
-The balanced cost-carbon schedule uses UK Government Green Book carbon values for greenhouse-gas appraisal. The central 2026 value is £264/tCO2e, with £132/tCO2e and £396/tCO2e used as low and high sensitivity values [5].
+The balanced cost-carbon schedule uses UK Government Green Book carbon values for greenhouse-gas appraisal. The central 2026 value is £264/tCO2e, with £132/tCO2e and £396/tCO2e used as low and high sensitivity values [4].
 
 **Table 2.1 Table of assumptions**
 | Assumption | Value |
@@ -147,9 +147,30 @@ The cost-minimising strategy achieved the largest financial saving, but it did n
 
 The balanced cost-carbon strategy is therefore important because it provides a compromise between these objectives. It preserved most of the cost saving from the cost-minimising schedule while improving emissions savings compared with price-only optimisation. This suggest that applying a carbon value can shift operation towards cleaner periods without removing most of the financial benefit of flexible operation.
 
+The sensitivity result also supports the main findings. The carbon value sensitivity showed that increasing the carbon value increased emissions savings whilst only slightly reducing cost savings and hence the result held. The efficiency showed that savings declined as electricity consumption increased the cost and emissions savings reduced which is expected as it is less able to avoid expensive or high-carbon periods however the trends between schedules were still maintained.
 
+The constrained-operation extension had little effect on the results. This suggests that, under the specific constraints tested, the unconstrained schedules were already relatively compatible with limited switching and minimum-load operation. However, this does not mean operational constraints are unimportant in general. Stricter constraints, start-up costs, ramp-rate limits or storage limitations could have a larger effect.
 ## 6. Limitations
+This project uses a simplified model, so the results should be interpreted as an illustrative scheduling analysis rather than a full commercial assessment of hydrogen production. Some limitations are stated out below:
 
+- The model uses only seven complete days of data which is enough to show the method however it does not capture seasonal variation, longer-term price patterns or unusual system conditions.
+
+- The electricity price data used was a market price signal rather than an industrial tariff. A real electrolyser operator will face additional costs and constraints not captured in this model.
+
+- The carbon-intensity data represent grid carbon intensity rather than project-specific marginal emissions. The emissions impact of changing electricity demand may differ depending on which generators respond at the margin.
+
+Despite these limitations, the simplified model is useful for comparing scheduling strategies under consistent assumptions and for showing how price and carbon-intensity signals can be incorporated into flexible hydrogen production decisions.
 ## 7. Conclusion
+This project showed that flexible scheduling of a grid-connected electrolyser can reduce both electricity cost and emissions compared with even operation over the selected seven-day period. The cost-minimising schedule achieved the largest cost saving, while the carbon-minimising schedules achieved the largest emissions savings.
+
+The balanced cost-carbon schedule was the strongest practical compromise. It preserved most of the financial benefit of cost-only optimisation while improving emissions savings compared with the cost-minimising strategy. This shows the value of including a carbon signal in electrolyser scheduling, rather than optimising only for electricity price.
+
+The forecast-versus-hindsight comparison also showed that forecast carbon intensity was useful for scheduling. The forecast-carbon schedule captured 93.03% of the maximum emissions saving available under the actual-carbon hindsight benchmark. This does not mean the forecast was 93.03% accurate, but it does show that forecast data could capture most of the available emissions-saving opportunity in this model period.
+
+The sensitivity analysis showed that the main findings were robust across different carbon values and electrolyser efficiency assumptions. The constrained-operation extension also showed that adding a maximum-start constraint and minimum-load constraint had little effect under the tested assumptions. Overall, the project suggests that carbon-aware flexible operation could help grid-connected electrolysers reduce emissions while retaining much of the cost benefit of price-based optimisation.
 
 ## 8. References
+[1] National Energy System Operator. *Carbon Intensity API*.  
+[2] Elexon. *System Sell Buy Prices / Insights Solution*.  
+[3] International Energy Agency. *Comparison of the emissions intensity of different hydrogen production routes, 2021*.  
+[4] UK Government. *Valuation of greenhouse gas emissions: for policy appraisal and evaluation*.
