@@ -121,12 +121,11 @@ The savings were compared to a baseline schedule for each case.
 
 The results show that percentage savings decreased as electricity consumption increased. For example, the cost-minimising strategy’s cost saving fell from 40.02% at 45 kWh/kg H₂ to 32.06% at 55 kWh/kg H₂. The forecast-carbon strategy’s emissions saving also fell from 19.65% to 13.15% across the same range.
 The balanced strategy followed the same pattern. Its cost saving fell from 39.14% to 31.44%, while its emissions saving fell from 13.61% to 9.12% as electricity consumption increased.
-### 4.5 Constrained-operation extension
-### 4.5 Constrained-operation extension
 
+### 4.5 Constrained-operation extension
 The constrained-operation extension tested whether the main results changed when additional operating constraints were added. The base optimiser assumes the electrolyser can switch freely between half-hour periods. The constrained model used PuLP to add two restrictions: a maximum of three starts per day and a minimum operating load of 0.2 MW when the electrolyser is on.
 
-**Table 6. Unconstrained and constrained schedule comparison.**
+**Table 4.5 Unconstrained and constrained schedule comparison.**
 
 | Strategy | Constraint case | Cost saving (%) | Emissions saving (%) |
 |---|---|---:|---:|
@@ -136,7 +135,18 @@ The constrained-operation extension tested whether the main results changed when
 | Forecast-carbon | Constrained | 13.07 | 16.15 |
 | Balanced | Unconstrained | 35.22 | 11.51 |
 | Balanced | Constrained | 34.94 | 11.20 |
+
+The constrained schedules produced very similar results to the unconstrained schedules. For the cost-minimising strategy, cost saving changed from 36.06% to 35.66%, while emissions saving changed from 7.26% to 7.23%. For the balanced strategy, cost saving changed from 35.22% to 34.94%, while emissions saving changed from 11.51% to 11.20%. The forecast-carbon strategy also remained almost unchanged, with emissions saving moving from 16.14% to 16.15%.
+
+This shows that, under the specific constraints tested, the constrained schedules produced almost the same cost and emissions outcomes as the unconstrained schedules.
+
 ## 5. Discussion
+The results show that flexible electrolyser operation can reduce both electricity cost and emissions compared with even operation over the selected seven day period. This supports the central idea of the project: for a grid connected electrolyser, when electricity is consumed can matter as much as how much electricity is consumed. By shifting operation into more favourable half-hour periods, the model was able to improve both economic and environmental performance while still meeting the same daily hydrogen production target. 
+
+The cost-minimising strategy achieved the largest financial saving, but it did not capture the full emissions benefit available in the model. In contrast, the carbon-minimising strategies achieved the larger emissions savings but lower cost savings. This highlights a clear trade-off between optimising purely for price and optimising purely for carbon intensity.
+
+The balanced cost-carbon strategy is therefore important because it provides a compromise between these objectives. It preserved most of the cost saving from the cost-minimising schedule while improving emissions savings compared with price-only optimisation. This suggest that applying a carbon value can shift operation towards cleaner periods without removing most of the financial benefit of flexible operation.
+
 
 ## 6. Limitations
 
